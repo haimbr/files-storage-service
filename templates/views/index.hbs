@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="js/index.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main-header_container">
+        <header>
+            <div class="main-header">
+                <div class="header__main-content">
+                    <div class="login-and-signup">
+                        <span class="registered-user">
+                            <span class="logout-button">התנתקות</span>
+                            <span class="user-name">
+                                {{#if user.userName}}
+                                <h5 class="user-logged-in"> שלום {{user.userName}}</h5>
+                                {{/if}}
+                            </span>
+                            <img src="./img/down.png" alt="down icon" />
+                        </span>
+
+                        <span class="unregistered-user">
+                            <h5> שלום אורח !</h5>
+                            <p><i>כניסה לחשבון </i><i> / הרשמה </i></p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+
+
+
+
+    <div class="files-container">
+        <h1>הקבצים שלי</h1>
+    </div>
+
+
+    {{#if user.userName}}
+    <form action="http://localhost:3000/upload-file" method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="file">
+        <button type="submit">submit</button>
+    </form>
+    {{/if}}
+
+    <div class="login-container">
+        <div class="backdrop"></div>
+        <form class="login-form" action="/signup">
+            <h2>כניסה</h2>
+            <input type="text" name="email" placeholder="כתובת מייל *" required />
+            <div class="email error"></div>
+            <input type="password" name="password" placeholder="סיסמה *" required />
+            <div class="password error"></div>
+            <button>התחברות</button>
+        </form>
+    </div>
+    <div class="signup-container">
+        <div class="backdrop"></div>
+        <form class="signup-form" action="/signup">
+            <h2>רישום </h2>
+            <input type="text" name="email" placeholder="כתובת מייל *" required />
+            <div class="email error"></div>
+            <input type="text" name="name" placeholder="שם משתמש *" required />
+            <div class="name error"></div>
+            <input type="password" name="password" placeholder="סיסמה *" required />
+            <div class="password error"></div>
+            <button>הרשמה</button>
+        </form>
+    </div>
+</body>
+
+</html>
